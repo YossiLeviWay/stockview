@@ -10,6 +10,29 @@
     <script defer src="https://pyscript.net/releases/2022.12.1/pyscript.js"></script>
   </head>
   <body>
-    <py-script>print('Yossi')</py-script>
+    <py-script>
+import pandas as pd 
+import numpy as np 
+from bs4 import BeautifulSoup 
+import requests 
+import time 
+import matplotlib.pyplot as plt
+from decimal import Decimal
+      
+      
+def get_measures_years(url): 
+    years_of_measures = [] 
+    measure_year1 = requests.get('https://roic.ai/company/'+url)
+    measure_year2 = BeautifulSoup(measure_year1.content, 'html.parser')
+    for y in measure_year2.find_all('div',
+                                    {'class':'grid grid-flow-col w-full justify-items-center h-full'})[0]:
+        years_of_measures.append(y.text)
+    return years_of_measures
+      
+def get_measures_years('PHM')
+    
+    
+    
+    </py-script>
   </body>
 </html>

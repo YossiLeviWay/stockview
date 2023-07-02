@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bar Chart with D3.js</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <label for="ticker">Enter Ticker:</label>
+      <input type="text" id="ticker" name="ticker">
+      <button onclick="updateChart()">Enter</button>
+    </div>
+    <svg id="chart"></svg>
+
+    <script>
+      function compareIndustryPE(ticker) {
+        d3.csv("russell1000.csv").then(function(data) {
+          var label = data.find(function(d) {
+            return d.Ticker === ticker;
+          });
+          var filteredData = data.filter(function(d) {
+            return d.Sector === label.Sector && d.Industry === label.Industry;
+          });
+          drawChart(filteredData);
+        });
+      }
+
+      function drawChart(data) {
+        var svgWidth = 400;
+        var svgHeight = 300;
+        var margin = { top: 20, right: 20, bottom: 30, left: 50 };
+        var chartWidth = svgWidth - margin.left - margin.right;
+        var chartHeight = svgHeight - margin.top - margin.bottom;
+
+        var svg = d3.select("#chart")
+          .attr("width", svgWidth)
+          .attr("height", svgHeight);
+
+        // Clear existing plot
+        svg.selectAll("*").remove();
+
+        var chart = svg.append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var xScale = d3.scaleBand()
+          .domain(data.map(function(d) { return d.Ticker; }))
+          .range([0, chartWidth])
+          .padding(0.1);
+
+        var yScale = d3.scaleLinear()
+          .domain([0, d3.max(data, function(d) { return +d['P/E']; })])
+          .range([chartHeight, 0]);
+
+        chart.selectAll(".bar")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("class", "bar")
+          .attr("x", function(d) { return xScale(d.Ticker); })
+          .attr("y", function(d) { return yScale(+d['P/E']); })
+          .attr("width", xScale.bandwidth())
+          .attr("height", function(d) { return chartHeight - yScale(+d['P/E']); });
+
+        chart.append("g")
+          .attr("transform", "translate(0," + chartHeight + ")")
+          .call(d3.axisBottom(xScale));
+
+        chart.append("g")
+          .call(d3.axisLeft(yScale));
+      }
+
+      function updateChart() {
+        var ticker = document.getElementById('ticker').value;
+        compareIndustryPE(ticker);
+      }
+
+      // Initial plot
+      var initialTicker = 'BLDR';
+      compareIndustryPE(initialTicker);
+    </script>
+  </body>
+</html>

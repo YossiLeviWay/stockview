@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Sales & Profit Overview</title>
-            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+                <script type="text/javascript" src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
 
     
 </head>
-<body>
-        <style>
+<body >
+            <style>
         .tab {
             overflow: hidden;
             border: 1px solid #ccc;
@@ -34,23 +34,26 @@
         }
 
         .chart-container {
+            display: block;
+        }
+
+        .chart-container:nth-child(n+2) {
             display: none;
-            padding: 6px 12px;
-            border-top: none;
         }
     </style>
     <div class="tab">
-            <button class="tablinks" onclick="showChart(event, '0a3671da38ff41edbad479e18c44af68')">Sales & Profit by months</button>
-            <button class="tablinks" onclick="showChart(event, '94637f6d6b9a478f802e2d03cfe47854')">Sales & Profit by subcategory</button>
-            <button class="tablinks" onclick="showChart(event, '2964c2566e8b4d8aa7603bfefd3d54ae')">Sales Calendar</button>
+            <button class="tablinks" onclick="showChart(event, 'ddf4ee3c51cb4edeb941a6db0d9253f1')">Sales & Profit by months</button>
+            <button class="tablinks" onclick="showChart(event, '5a7768cbcfb948fe8b8987adcedb5fa0')">Sales & Profit by subcategory</button>
+            <button class="tablinks" onclick="showChart(event, 'a93b1fb7213549b28ccf494ed3136e2d')">Sales Calendar</button>
     </div>
 
     <div class="box">
-                <div id="0a3671da38ff41edbad479e18c44af68" class="chart-container" style="width:900px; height:500px;"></div>
+                <div id="ddf4ee3c51cb4edeb941a6db0d9253f1" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-        var chart_0a3671da38ff41edbad479e18c44af68 = echarts.init(
-            document.getElementById('0a3671da38ff41edbad479e18c44af68'), 'white', {renderer: 'canvas'});
-        var option_0a3671da38ff41edbad479e18c44af68 = {
+            document.getElementById('ddf4ee3c51cb4edeb941a6db0d9253f1').style.width = document.getElementById('ddf4ee3c51cb4edeb941a6db0d9253f1').parentNode.clientWidth + 'px';
+        var chart_ddf4ee3c51cb4edeb941a6db0d9253f1 = echarts.init(
+            document.getElementById('ddf4ee3c51cb4edeb941a6db0d9253f1'), 'white', {renderer: 'canvas'});
+        var option_ddf4ee3c51cb4edeb941a6db0d9253f1 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -59,31 +62,19 @@
     "animationDurationUpdate": 300,
     "animationEasingUpdate": "cubicOut",
     "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
     "color": [
-        "#c23531",
-        "#2f4554",
-        "#61a0a8",
-        "#d48265",
-        "#749f83",
-        "#ca8622",
-        "#bda29a",
-        "#6e7074",
-        "#546570",
-        "#c4ccd3",
-        "#f05b72",
-        "#ef5b9c",
-        "#f47920",
-        "#905a3d",
-        "#fab27b",
-        "#2a5caa",
-        "#444693",
-        "#726930",
-        "#b2d235",
-        "#6d8346",
-        "#ac6767",
-        "#1d953f",
-        "#6950a1",
-        "#918597"
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
     ],
     "series": [
         {
@@ -104,7 +95,10 @@
                 118448.0,
                 83829.0
             ],
+            "realtimeSort": false,
             "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
             "barMinHeight": 0,
             "barCategoryGap": "20%",
             "barGap": "30%",
@@ -117,7 +111,6 @@
             "z": 2,
             "label": {
                 "show": true,
-                "position": "top",
                 "margin": 8
             }
         },
@@ -139,7 +132,10 @@
                 9690.0,
                 8483.0
             ],
+            "realtimeSort": false,
             "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
             "barMinHeight": 0,
             "barCategoryGap": "20%",
             "barGap": "30%",
@@ -152,7 +148,6 @@
             "z": 2,
             "label": {
                 "show": true,
-                "position": "top",
                 "margin": 8
             }
         }
@@ -163,15 +158,27 @@
                 "Sales",
                 "Profit"
             ],
-            "selected": {
-                "Sales": true,
-                "Profit": true
-            },
+            "selected": {},
             "show": true,
             "padding": 5,
             "itemGap": 10,
             "itemWidth": 25,
-            "itemHeight": 14
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
         }
     ],
     "tooltip": {
@@ -185,11 +192,16 @@
         "alwaysShowContent": false,
         "showDelay": 0,
         "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
         "textStyle": {
             "fontSize": 14
         },
         "borderWidth": 0,
-        "padding": 5
+        "padding": 5,
+        "order": "seriesAsc"
     },
     "xAxis": [
         {
@@ -203,7 +215,7 @@
             "splitNumber": 5,
             "minInterval": 0,
             "splitLine": {
-                "show": false,
+                "show": true,
                 "lineStyle": {
                     "show": true,
                     "width": 1,
@@ -240,7 +252,7 @@
             "splitNumber": 5,
             "minInterval": 0,
             "splitLine": {
-                "show": false,
+                "show": true,
                 "lineStyle": {
                     "show": true,
                     "width": 1,
@@ -253,20 +265,27 @@
     ],
     "title": [
         {
+            "show": true,
             "text": "Sales & Profit by month",
+            "target": "blank",
             "subtext": "in USD",
+            "subtarget": "blank",
             "padding": 5,
-            "itemGap": 10
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
         }
     ]
 };
-        chart_0a3671da38ff41edbad479e18c44af68.setOption(option_0a3671da38ff41edbad479e18c44af68);
+        chart_ddf4ee3c51cb4edeb941a6db0d9253f1.setOption(option_ddf4ee3c51cb4edeb941a6db0d9253f1);
     </script>
-                <div id="94637f6d6b9a478f802e2d03cfe47854" class="chart-container" style="width:900px; height:500px;"></div>
+                <div id="5a7768cbcfb948fe8b8987adcedb5fa0" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-        var chart_94637f6d6b9a478f802e2d03cfe47854 = echarts.init(
-            document.getElementById('94637f6d6b9a478f802e2d03cfe47854'), 'white', {renderer: 'canvas'});
-        var option_94637f6d6b9a478f802e2d03cfe47854 = {
+            document.getElementById('5a7768cbcfb948fe8b8987adcedb5fa0').style.width = document.getElementById('5a7768cbcfb948fe8b8987adcedb5fa0').parentNode.clientWidth + 'px';
+        var chart_5a7768cbcfb948fe8b8987adcedb5fa0 = echarts.init(
+            document.getElementById('5a7768cbcfb948fe8b8987adcedb5fa0'), 'white', {renderer: 'canvas'});
+        var option_5a7768cbcfb948fe8b8987adcedb5fa0 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -275,31 +294,19 @@
     "animationDurationUpdate": 300,
     "animationEasingUpdate": "cubicOut",
     "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
     "color": [
-        "#c23531",
-        "#2f4554",
-        "#61a0a8",
-        "#d48265",
-        "#749f83",
-        "#ca8622",
-        "#bda29a",
-        "#6e7074",
-        "#546570",
-        "#c4ccd3",
-        "#f05b72",
-        "#ef5b9c",
-        "#f47920",
-        "#905a3d",
-        "#fab27b",
-        "#2a5caa",
-        "#444693",
-        "#726930",
-        "#b2d235",
-        "#6d8346",
-        "#ac6767",
-        "#1d953f",
-        "#6950a1",
-        "#918597"
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
     ],
     "series": [
         {
@@ -325,7 +332,10 @@
                 95554.0,
                 105341.0
             ],
+            "realtimeSort": false,
             "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
             "barMinHeight": 0,
             "barCategoryGap": "20%",
             "barGap": "30%",
@@ -371,7 +381,10 @@
                 7644.0,
                 12849.0
             ],
+            "realtimeSort": false,
             "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
             "barMinHeight": 0,
             "barCategoryGap": "20%",
             "barGap": "30%",
@@ -401,15 +414,27 @@
                 "Sales",
                 "Profit"
             ],
-            "selected": {
-                "Sales": true,
-                "Profit": true
-            },
+            "selected": {},
             "show": true,
             "padding": 5,
             "itemGap": 10,
             "itemWidth": 25,
-            "itemHeight": 14
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
         }
     ],
     "tooltip": {
@@ -423,11 +448,16 @@
         "alwaysShowContent": false,
         "showDelay": 0,
         "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
         "textStyle": {
             "fontSize": 14
         },
         "borderWidth": 0,
-        "padding": 5
+        "padding": 5,
+        "order": "seriesAsc"
     },
     "xAxis": [
         {
@@ -441,7 +471,7 @@
             "splitNumber": 5,
             "minInterval": 0,
             "splitLine": {
-                "show": false,
+                "show": true,
                 "lineStyle": {
                     "show": true,
                     "width": 1,
@@ -464,7 +494,7 @@
             "splitNumber": 5,
             "minInterval": 0,
             "splitLine": {
-                "show": false,
+                "show": true,
                 "lineStyle": {
                     "show": true,
                     "width": 1,
@@ -490,26 +520,33 @@
                 "Storage",
                 "Binders",
                 "Chairs",
-                "Phones"
+                "Shrew"
             ]
         }
     ],
     "title": [
         {
+            "show": true,
             "text": "Sales & Profit by subcategory",
+            "target": "blank",
             "subtext": "in USD",
+            "subtarget": "blank",
             "padding": 5,
-            "itemGap": 10
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
         }
     ]
 };
-        chart_94637f6d6b9a478f802e2d03cfe47854.setOption(option_94637f6d6b9a478f802e2d03cfe47854);
+        chart_5a7768cbcfb948fe8b8987adcedb5fa0.setOption(option_5a7768cbcfb948fe8b8987adcedb5fa0);
     </script>
-                <div id="2964c2566e8b4d8aa7603bfefd3d54ae" class="chart-container" style="width:900px; height:500px;"></div>
+                <div id="a93b1fb7213549b28ccf494ed3136e2d" class="chart-container" style="width:900px; height:500px; "></div>
     <script>
-        var chart_2964c2566e8b4d8aa7603bfefd3d54ae = echarts.init(
-            document.getElementById('2964c2566e8b4d8aa7603bfefd3d54ae'), 'white', {renderer: 'canvas'});
-        var option_2964c2566e8b4d8aa7603bfefd3d54ae = {
+            document.getElementById('a93b1fb7213549b28ccf494ed3136e2d').style.width = document.getElementById('a93b1fb7213549b28ccf494ed3136e2d').parentNode.clientWidth + 'px';
+        var chart_a93b1fb7213549b28ccf494ed3136e2d = echarts.init(
+            document.getElementById('a93b1fb7213549b28ccf494ed3136e2d'), 'white', {renderer: 'canvas'});
+        var option_a93b1fb7213549b28ccf494ed3136e2d = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -518,31 +555,19 @@
     "animationDurationUpdate": 300,
     "animationEasingUpdate": "cubicOut",
     "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
     "color": [
-        "#c23531",
-        "#2f4554",
-        "#61a0a8",
-        "#d48265",
-        "#749f83",
-        "#ca8622",
-        "#bda29a",
-        "#6e7074",
-        "#546570",
-        "#c4ccd3",
-        "#f05b72",
-        "#ef5b9c",
-        "#f47920",
-        "#905a3d",
-        "#fab27b",
-        "#2a5caa",
-        "#444693",
-        "#726930",
-        "#b2d235",
-        "#6d8346",
-        "#ac6767",
-        "#1d953f",
-        "#6950a1",
-        "#918597"
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
     ],
     "series": [
         {
@@ -1839,8 +1864,8 @@
                 ]
             ],
             "label": {
-                "show": true,
-                "position": "top",
+                "show": false,
+                "position": "inside",
                 "margin": 8
             }
         }
@@ -1850,14 +1875,27 @@
             "data": [
                 ""
             ],
-            "selected": {
-                "": true
-            },
+            "selected": {},
             "show": false,
             "padding": 5,
             "itemGap": 10,
             "itemWidth": 25,
-            "itemHeight": 14
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
         }
     ],
     "tooltip": {
@@ -1871,24 +1909,38 @@
         "alwaysShowContent": false,
         "showDelay": 0,
         "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
         "textStyle": {
             "fontSize": 14
         },
         "borderWidth": 0,
-        "padding": 5
+        "padding": 5,
+        "order": "seriesAsc"
     },
     "calendar": {
+        "zlevel": 0,
+        "z": 2,
         "width": "auto",
         "orient": "horizontal",
         "range": "2021",
-        "cellSize": 20
+        "cellSize": 20,
+        "silent": false
     },
     "title": [
         {
+            "show": true,
             "text": "Sales Calendar",
+            "target": "blank",
             "subtext": "in USD",
+            "subtarget": "blank",
             "padding": 5,
-            "itemGap": 10
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
         }
     ],
     "visualMap": {
@@ -1906,16 +1958,18 @@
         "calculable": true,
         "inverse": false,
         "splitNumber": 5,
+        "hoverLink": true,
         "orient": "horizontal",
         "left": "100px",
         "top": "230px",
+        "padding": 5,
         "showLabel": true,
         "itemWidth": 20,
         "itemHeight": 140,
         "borderWidth": 0
     }
 };
-        chart_2964c2566e8b4d8aa7603bfefd3d54ae.setOption(option_2964c2566e8b4d8aa7603bfefd3d54ae);
+        chart_a93b1fb7213549b28ccf494ed3136e2d.setOption(option_a93b1fb7213549b28ccf494ed3136e2d);
     </script>
     </div>
 

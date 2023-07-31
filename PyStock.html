@@ -12,8 +12,173 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 
-		
+		<style>
+			iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 1248px;
+			  height: 1000px;
+			}
+			@media screen and (max-width: 1100px) {
+				iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 1000px;
+			  height: 800px;
+			}
+			@media screen and (max-width: 1000px) {
+				iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 900px;
+			  height: 800px;
+			}
+			@media screen and (max-width: 900px) {
+				iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 800px;
+			  height: 700px;
+			}
+			@media screen and (max-width: 800px) {
+				iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 600px;
+			  height: 700px;
+			}
+			
+			@media screen and (max-width: 700px) {
+				iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 500px;
+			  height: 500px;
+			}
+			@media screen and (max-width: 600px) {
+				iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 450px;
+			  height: 500px;
+			}
+			@media screen and (max-width: 500px) {
+				iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 350px;
+			  height: 500px;
+			}
+			@media screen and (max-width: 400px) {
+				iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 300px;
+			  height: 500px;
+			}
+			@media screen and (max-width: 300px) {
+				iframe {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 250px;
+			  height: 500px;
+			}
+			</style>
 	</head>
+
+	<script>
+		function openURL(event) {
+		  event.preventDefault(); // Prevent form submission
+	  
+		  var url = document.getElementById("searchInput").value; // Get the URL entered by the user
+		  var iframe = document.getElementById("externalPage"); // Get the iframe element
+	  
+		  // Add prefix and suffix to the URL
+		  url = url.replace(/\s+/g, '').toLowerCase();
+		  var prefixedUrl = "HTMLS/" + url + ".html";
+	  
+		  iframe.src = prefixedUrl; // Set the modified URL as the iframe source
+		}
+	  </script>
+<style>
+/* Styles for the search form */
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.search-input {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  background-color: white;; /* Darker background with 50% transparency */
+  color: black;
+  font-size: 16px;
+  outline: none;
+  width: 200px;
+  -webkit-text-fill-color: black;
+}
+
+.search-input::placeholder {
+  color: rgba(0, 0, 0, 0.7); /* Placeholder text color with reduced opacity */
+}
+
+.search-button {
+  border: none;
+  background-color: white; /* Blue color for the search button */
+  color: black;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: rgb(240, 240, 240); /* Darker shade of blue on hover */
+}
+
+.custom-tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .custom-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%; /* Adjusted property */
+    left: 200%;
+    transform: translateX(-50%);
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.8); /* Blue color with 50% transparency */
+    color: rgba(0, 0, 0, 0.8); /* White color with 50% transparency */
+    border-radius: 8px; /* Rounded borders */
+    font-size: 14px;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); /* Black shadow */
+    transition: opacity 0.3s;
+	width: 750px;
+  }
+
+  .custom-tooltip:hover::after {
+    visibility: visible;
+    opacity: 1;
+  }
+</style>
+
+
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
 
@@ -46,21 +211,25 @@
 					<!-- Hero -->
 						<section id="hero" class="container">
 							<header>
-								<h2>Yossi Levi Protfolio
+								<h2>PyStock Project
 								</h2>
 							</header>
-							<p>
-								A skilled BI Developer proficient in Python, SQL, DAX, 
-							<br />
-							Power BI, Tableau, SSIS, Excel, and more.</p>
-							<br><b><a href="mailto:yossi.levi011@gmail.com">Freelance Solutions in BI</a></b>
-							<ul class="actions">
-								<li><a href="PyStock.html" class="button">Try Pystock</a></li>
-							</ul>
+							<form class="search-form" onsubmit="openURL(event)">
+								<input type="search" id="searchInput" class="search-input" placeholder="Ticker..." required>
+								  <button type="submit" class="search-button">Search</button>
+
+							  </form>
+							  <a href="javascript:void(0);" onclick="document.getElementById('externalPage').src = 'market_tree.html';">
+  						<br><b><h4>
+							<p class="custom-tooltip" data-tooltip="The 10 cap stock valuation method is originally a real estate valuation method. Unlike companies in the stock market, profit in real estate tends to remain relatively constant year-over-year, with rent and maintenance expenditures for properties being rather predictable and relatively constant. Therefore, the profit figures generated last year from a property are generally going to be very similar in the following year. As a result, the 10 cap stock valuation is most applicable to mature businesses (e.g., DJIA companies and/or dividend aristocrats) that don't see a lot of growth or overall volatility. Given, a majority of companies in the stock market see substantial year-over-year volatility in their earnings and stock prices, which is where this valuation method falls short.">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10 CAP Market Tree</h4></b></p>
+</a>
+
+
 						</section>
 
 				</div>
-
+				<iframe id="externalPage" width="1248" height="800" frameborder="0"></iframe>
 			<!-- Features 1 -->
 				<div class="wrapper">
 					<div class="container">

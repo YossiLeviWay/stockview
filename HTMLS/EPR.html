@@ -1,0 +1,2852 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EPR Insights</title>
+                <script type="text/javascript" src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
+
+    
+</head>
+<body >
+            <style>
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 12px 16px;
+            transition: 0.3s;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        .chart-container {
+            display: block;
+        }
+
+        .chart-container:nth-child(n+2) {
+            display: none;
+        }
+    </style>
+    <div class="tab">
+            <button class="tablinks" onclick="showChart(event, 'f507b230a38440cc8d693ef22d1bd4ea')">Metrics</button>
+            <button class="tablinks" onclick="showChart(event, 'bab19d5c50e1468d840c43adf6a6672d')">Cash / Debt</button>
+            <button class="tablinks" onclick="showChart(event, '5f3da8111d7449318a77ed6f032a274f')">Growth Rates</button>
+            <button class="tablinks" onclick="showChart(event, '3415940bb18345e7afb0b258f3b9c468')">Growth Year over Year</button>
+            <button class="tablinks" onclick="showChart(event, 'f513492697e2404e82a23457165a10a8')">Peers Comparison</button>
+            <button class="tablinks" onclick="showChart(event, '6bbf63167d644c12ae3adeda283f36c1')">Ratios</button>
+            <button class="tablinks" onclick="showChart(event, '04ad3000878d414abcdd3f855ba123e9')">Free Cash Flow to Market Cap</button>
+    </div>
+
+    <div class="box">
+                <div id="f507b230a38440cc8d693ef22d1bd4ea" class="chart-container" style="width:900px; height:500px; "></div>
+    <script>
+            document.getElementById('f507b230a38440cc8d693ef22d1bd4ea').style.width = document.getElementById('f507b230a38440cc8d693ef22d1bd4ea').parentNode.clientWidth + 'px';
+        var chart_f507b230a38440cc8d693ef22d1bd4ea = echarts.init(
+            document.getElementById('f507b230a38440cc8d693ef22d1bd4ea'), 'white', {renderer: 'canvas'});
+        var option_f507b230a38440cc8d693ef22d1bd4ea = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "bar",
+            "name": "Revenue per share",
+            "legendHoverLink": true,
+            "data": [
+                "6.63",
+                "7.03",
+                "5.48",
+                "5.27",
+                "4.93",
+                "6.88",
+                "7.14",
+                "7.10",
+                "7.24",
+                "7.78",
+                "8.09",
+                "9.43",
+                "8.50",
+                "5.46",
+                "7.11",
+                "8.78",
+                "8.96"
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "Earnings per share",
+            "legendHoverLink": true,
+            "data": [
+                "3.92",
+                "4.24",
+                "0.22",
+                "2.54",
+                "2.47",
+                "2.60",
+                "3.75",
+                "3.31",
+                "3.35",
+                "3.55",
+                "3.69",
+                "3.59",
+                "2.64",
+                "-1.73",
+                "1.32",
+                "2.03",
+                "2.24"
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "FCF per share",
+            "legendHoverLink": true,
+            "data": [
+                "0.70",
+                "-1.03",
+                "-0.17",
+                "-1.48",
+                "3.06",
+                "4.43",
+                "4.87",
+                "4.61",
+                "4.79",
+                "4.83",
+                "5.49",
+                "6.52",
+                "5.73",
+                "0.86",
+                "4.10",
+                "5.89",
+                "5.98"
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "Dividends per share",
+            "legendHoverLink": true,
+            "data": [
+                "3.66",
+                "4.08",
+                "3.52",
+                "3.24",
+                "3.38",
+                "3.48",
+                "4.12",
+                "3.83",
+                "4.01",
+                "4.19",
+                "4.38",
+                "4.61",
+                "4.79",
+                "2.27",
+                "1.57",
+                "3.54",
+                "3.62"
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "CAPEX per share",
+            "legendHoverLink": true,
+            "data": [
+                "4.23",
+                "5.81",
+                "4.29",
+                "5.47",
+                "1.14",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "Book Value per sh.",
+            "legendHoverLink": true,
+            "data": [
+                "37.76",
+                "41.71",
+                "40.77",
+                "35.47",
+                "31.52",
+                "31.19",
+                "35.14",
+                "35.51",
+                "35.67",
+                "34.49",
+                "41.12",
+                "38.56",
+                "39.17",
+                "34.62",
+                "35.00",
+                "33.82",
+                "33.99"
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "Revenue per share",
+                "Earnings per share",
+                "FCF per share",
+                "Dividends per share",
+                "CAPEX per share",
+                "Book Value per sh."
+            ],
+            "selected": {
+                "Revenue per share": true,
+                "Earnings per share": false,
+                "FCF per share": false,
+                "Dividends per share": false,
+                "CAPEX per share": false,
+                "Book Value per sh.": false
+            },
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "2007",
+                "2008",
+                "2009",
+                "2010",
+                "2011",
+                "2012",
+                "2013",
+                "2014",
+                "2015",
+                "2016",
+                "2017",
+                "2018",
+                "2019",
+                "2020",
+                "2021",
+                "2022",
+                "TTM"
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "title": [
+        {
+            "show": true,
+            "text": "Metrics",
+            "target": "blank",
+            "subtext": "$USD",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ],
+    "dataZoom": {
+        "show": true,
+        "type": "slider",
+        "showDetail": true,
+        "showDataShadow": true,
+        "realtime": true,
+        "start": 20,
+        "end": 80,
+        "orient": "horizontal",
+        "zoomLock": false,
+        "filterMode": "filter"
+    }
+};
+        chart_f507b230a38440cc8d693ef22d1bd4ea.setOption(option_f507b230a38440cc8d693ef22d1bd4ea);
+    </script>
+                <div id="bab19d5c50e1468d840c43adf6a6672d" class="chart-container" style="width:900px; height:500px; "></div>
+    <script>
+            document.getElementById('bab19d5c50e1468d840c43adf6a6672d').style.width = document.getElementById('bab19d5c50e1468d840c43adf6a6672d').parentNode.clientWidth + 'px';
+        var chart_bab19d5c50e1468d840c43adf6a6672d = echarts.init(
+            document.getElementById('bab19d5c50e1468d840c43adf6a6672d'), 'white', {renderer: 'canvas'});
+        var option_bab19d5c50e1468d840c43adf6a6672d = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "bar",
+            "name": "Comm.Shares outs.",
+            "legendHoverLink": true,
+            "data": [
+                "27",
+                "31",
+                "36",
+                "45",
+                "47",
+                "47",
+                "48",
+                "54",
+                "58",
+                "63",
+                "71",
+                "74",
+                "77",
+                "76",
+                "75",
+                "75",
+                "75"
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "Long-term debt (m)",
+            "legendHoverLink": true,
+            "data": [
+                "1081",
+                "1262",
+                "1141",
+                "1191",
+                "1154",
+                "1369",
+                "1475",
+                "1646",
+                "1982",
+                "2486",
+                "3029",
+                "2986",
+                "3103",
+                "3897",
+                "3023",
+                "0",
+                "3050"
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "Free Cash Flow",
+            "legendHoverLink": true,
+            "data": [
+                19,
+                -32,
+                -6,
+                -67,
+                144,
+                208,
+                234,
+                249,
+                278,
+                304,
+                390,
+                482,
+                441,
+                65,
+                308,
+                442,
+                449
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "Comm.Shares outs.",
+                "Long-term debt (m)",
+                "Free Cash Flow"
+            ],
+            "selected": {},
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "2007",
+                "2008",
+                "2009",
+                "2010",
+                "2011",
+                "2012",
+                "2013",
+                "2014",
+                "2015",
+                "2016",
+                "2017",
+                "2018",
+                "2019",
+                "2020",
+                "2021",
+                "2022",
+                "TTM"
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "title": [
+        {
+            "show": true,
+            "text": "Cash, Debt and Shares",
+            "target": "blank",
+            "subtext": "$USD",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ],
+    "dataZoom": {
+        "show": true,
+        "type": "slider",
+        "showDetail": true,
+        "showDataShadow": true,
+        "realtime": true,
+        "start": 20,
+        "end": 80,
+        "orient": "horizontal",
+        "zoomLock": false,
+        "filterMode": "filter"
+    }
+};
+        chart_bab19d5c50e1468d840c43adf6a6672d.setOption(option_bab19d5c50e1468d840c43adf6a6672d);
+    </script>
+                <div id="5f3da8111d7449318a77ed6f032a274f" class="chart-container" style="width:900px; height:500px; "></div>
+    <script>
+            document.getElementById('5f3da8111d7449318a77ed6f032a274f').style.width = document.getElementById('5f3da8111d7449318a77ed6f032a274f').parentNode.clientWidth + 'px';
+        var chart_5f3da8111d7449318a77ed6f032a274f = echarts.init(
+            document.getElementById('5f3da8111d7449318a77ed6f032a274f'), 'white', {renderer: 'canvas'});
+        var option_5f3da8111d7449318a77ed6f032a274f = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "line",
+            "name": "Revenue per share",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "10 Years",
+                    2.3
+                ],
+                [
+                    "7 Years",
+                    2.04
+                ],
+                [
+                    "5 Years",
+                    null
+                ],
+                [
+                    "3 Years",
+                    17.95
+                ],
+                [
+                    "Last Year",
+                    2.05
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": true,
+                "margin": 8
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "zlevel": 0,
+            "z": 0
+        },
+        {
+            "type": "line",
+            "name": "Earnings per share",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "10 Years",
+                    null
+                ],
+                [
+                    "7 Years",
+                    -193.63
+                ],
+                [
+                    "5 Years",
+                    -191.0
+                ],
+                [
+                    "3 Years",
+                    -208.99
+                ],
+                [
+                    "Last Year",
+                    10.34
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": true,
+                "margin": 8
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "zlevel": 0,
+            "z": 0
+        },
+        {
+            "type": "line",
+            "name": "FCF per share",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "10 Years",
+                    2.07
+                ],
+                [
+                    "7 Years",
+                    3.1
+                ],
+                [
+                    "5 Years",
+                    -198.29
+                ],
+                [
+                    "3 Years",
+                    90.87
+                ],
+                [
+                    "Last Year",
+                    1.53
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": true,
+                "margin": 8
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "zlevel": 0,
+            "z": 0
+        },
+        {
+            "type": "line",
+            "name": "Book Value per sh.",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "10 Years",
+                    null
+                ],
+                [
+                    "7 Years",
+                    -199.79
+                ],
+                [
+                    "5 Years",
+                    -197.51
+                ],
+                [
+                    "3 Years",
+                    -199.39
+                ],
+                [
+                    "Last Year",
+                    0.5
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": true,
+                "margin": 8
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "zlevel": 0,
+            "z": 0
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "Revenue per share",
+                "Earnings per share",
+                "FCF per share",
+                "Book Value per sh."
+            ],
+            "selected": {
+                "Earnings per share": false,
+                "FCF per share": false,
+                "Book Value per sh.": false
+            },
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "10 Years",
+                "7 Years",
+                "5 Years",
+                "3 Years",
+                "Last Year"
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "title": [
+        {
+            "show": true,
+            "text": "Growth Rate",
+            "target": "blank",
+            "subtext": "in Percentage",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ]
+};
+        chart_5f3da8111d7449318a77ed6f032a274f.setOption(option_5f3da8111d7449318a77ed6f032a274f);
+    </script>
+                <div id="3415940bb18345e7afb0b258f3b9c468" class="chart-container" style="width:900px; height:500px; "></div>
+    <script>
+            document.getElementById('3415940bb18345e7afb0b258f3b9c468').style.width = document.getElementById('3415940bb18345e7afb0b258f3b9c468').parentNode.clientWidth + 'px';
+        var chart_3415940bb18345e7afb0b258f3b9c468 = echarts.init(
+            document.getElementById('3415940bb18345e7afb0b258f3b9c468'), 'white', {renderer: 'canvas'});
+        var option_3415940bb18345e7afb0b258f3b9c468 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "line",
+            "name": "Dividend Growth Rate",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "2007",
+                    11.48
+                ],
+                [
+                    "2008",
+                    -13.73
+                ],
+                [
+                    "2009",
+                    -7.95
+                ],
+                [
+                    "2010",
+                    4.32
+                ],
+                [
+                    "2011",
+                    2.96
+                ],
+                [
+                    "2012",
+                    18.39
+                ],
+                [
+                    "2013",
+                    -7.04
+                ],
+                [
+                    "2014",
+                    4.7
+                ],
+                [
+                    "2015",
+                    4.49
+                ],
+                [
+                    "2016",
+                    4.53
+                ],
+                [
+                    "2017",
+                    5.25
+                ],
+                [
+                    "2018",
+                    3.9
+                ],
+                [
+                    "2019",
+                    -52.61
+                ],
+                [
+                    "2020",
+                    -30.84
+                ],
+                [
+                    "2021",
+                    125.48
+                ],
+                [
+                    "2022",
+                    2.26
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": true,
+                "margin": 8
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "zlevel": 0,
+            "z": 0
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "Dividend Growth Rate"
+            ],
+            "selected": {},
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "2007",
+                "2008",
+                "2009",
+                "2010",
+                "2011",
+                "2012",
+                "2013",
+                "2014",
+                "2015",
+                "2016",
+                "2017",
+                "2018",
+                "2019",
+                "2020",
+                "2021",
+                "2022",
+                "TTM"
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "title": [
+        {
+            "show": true,
+            "text": "Dividend Growth Rate",
+            "target": "blank",
+            "subtext": "%Percentage",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ],
+    "dataZoom": {
+        "show": true,
+        "type": "slider",
+        "showDetail": true,
+        "showDataShadow": true,
+        "realtime": true,
+        "start": 20,
+        "end": 80,
+        "orient": "horizontal",
+        "zoomLock": false,
+        "filterMode": "filter"
+    }
+};
+        chart_3415940bb18345e7afb0b258f3b9c468.setOption(option_3415940bb18345e7afb0b258f3b9c468);
+    </script>
+                <div id="f513492697e2404e82a23457165a10a8" class="chart-container" style="width:900px; height:500px; "></div>
+    <script>
+            document.getElementById('f513492697e2404e82a23457165a10a8').style.width = document.getElementById('f513492697e2404e82a23457165a10a8').parentNode.clientWidth + 'px';
+        var chart_f513492697e2404e82a23457165a10a8 = echarts.init(
+            document.getElementById('f513492697e2404e82a23457165a10a8'), 'white', {renderer: 'canvas'});
+        var option_f513492697e2404e82a23457165a10a8 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "bar",
+            "name": "P/E",
+            "legendHoverLink": true,
+            "data": [
+                32.31,
+                62.97,
+                92.04,
+                28.86,
+                12.46,
+                335.67,
+                43.33,
+                18.7,
+                108.35,
+                22.63,
+                26.68,
+                20.21,
+                68.47,
+                27.87,
+                52.67,
+                23.46,
+                26.33,
+                822.4,
+                26.86,
+                31.43,
+                78.46,
+                32.22,
+                23.69,
+                140.31,
+                85.84,
+                45.83,
+                15.67,
+                41.88,
+                16.84,
+                19.82,
+                31.23,
+                21.52,
+                28.89,
+                54.51,
+                29.54,
+                12.93,
+                0.0,
+                24.68,
+                22.69,
+                47.22,
+                21.93,
+                29.09,
+                64.45,
+                18.38,
+                18.03,
+                38.24,
+                36.89,
+                18.19,
+                20.71,
+                10.82,
+                56.36,
+                17.3,
+                23.01,
+                20.3,
+                46.97,
+                35.37,
+                12.09,
+                17.21
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "Return on capital",
+            "legendHoverLink": true,
+            "data": [
+                8.6,
+                4.8,
+                3.7,
+                6.2,
+                14.5,
+                1.8,
+                2.4,
+                7.9,
+                1.8,
+                5.1,
+                4.2,
+                10.7,
+                8.3,
+                4.2,
+                1.6,
+                9.7,
+                2.5,
+                1.8,
+                7.4,
+                7.1,
+                2807.9,
+                5.0,
+                4.5,
+                4.3,
+                3.3,
+                7.5,
+                6.7,
+                3.4,
+                6.6,
+                7.1,
+                5.3,
+                4.6,
+                5.0,
+                2.3,
+                7.1,
+                5.9,
+                0.7,
+                9.0,
+                5.9,
+                4.8,
+                4.7,
+                7.2,
+                0.7,
+                4.5,
+                6.5,
+                4.2,
+                3.3,
+                2.9,
+                4.9,
+                16.2,
+                4.2,
+                3.1,
+                3184.4,
+                5.7,
+                -0.7,
+                5.0,
+                4.3,
+                4.4
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        },
+        {
+            "type": "bar",
+            "name": "Return on equity",
+            "legendHoverLink": true,
+            "data": [
+                6.3,
+                31.7,
+                6.8,
+                23.1,
+                63.4,
+                0.7,
+                2.3,
+                72.1,
+                2.1,
+                6.0,
+                9.1,
+                12.5,
+                -7.1,
+                8.2,
+                -0.0,
+                26.4,
+                3.9,
+                -0.6,
+                10.9,
+                106.4,
+                3098.7,
+                7.1,
+                7.9,
+                2.0,
+                0.7,
+                14.2,
+                9.4,
+                3.9,
+                18.1,
+                13.1,
+                9.8,
+                7.8,
+                2.6,
+                2.4,
+                10.0,
+                13.8,
+                -0.1,
+                36.7,
+                8.1,
+                8.2,
+                9.3,
+                11.8,
+                -3.0,
+                10.1,
+                12.4,
+                5.3,
+                2.5,
+                9.3,
+                10.5,
+                41.9,
+                5.7,
+                3.7,
+                3605.8,
+                7.6,
+                -5.9,
+                11.0,
+                3.7,
+                6.4
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "P/E",
+                "Return on capital",
+                "Return on equity"
+            ],
+            "selected": {
+                "Return on capital": false,
+                "Return on equity": false
+            },
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "PLD",
+                "AMT",
+                "EQIX",
+                "CCI",
+                "PSA",
+                "WELL",
+                "O",
+                "SPG",
+                "DLR",
+                "VICI",
+                "AVB",
+                "WY",
+                "SBAC",
+                "EQR",
+                "INVH",
+                "EXR",
+                "ARE",
+                "VTR",
+                "MAA",
+                "IRM",
+                "SUI",
+                "ESS",
+                "WPC",
+                "UDR",
+                "KIM",
+                "ELS",
+                "HST",
+                "AMH",
+                "GLPI",
+                "CPT",
+                "LSI",
+                "PEAK",
+                "REG",
+                "REXR",
+                "CUBE",
+                "BXP",
+                "COLD",
+                "LAMR",
+                "NNN",
+                "EGP",
+                "FRT",
+                "OHI",
+                "HR",
+                "FR",
+                "BRX",
+                "STAG",
+                "ADC",
+                "SRC",
+                "MPW",
+                "AIRC",
+                "RYN",
+                "KRC",
+                "CUZ",
+                "EPR",
+                "VNO",
+                "NSA",
+                "PK",
+                "HIW"
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "title": [
+        {
+            "show": true,
+            "text": "EPR Peers Comparison",
+            "target": "blank",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ]
+};
+        chart_f513492697e2404e82a23457165a10a8.setOption(option_f513492697e2404e82a23457165a10a8);
+    </script>
+                <div id="6bbf63167d644c12ae3adeda283f36c1" class="chart-container" style="width:900px; height:500px; "></div>
+    <script>
+            document.getElementById('6bbf63167d644c12ae3adeda283f36c1').style.width = document.getElementById('6bbf63167d644c12ae3adeda283f36c1').parentNode.clientWidth + 'px';
+        var chart_6bbf63167d644c12ae3adeda283f36c1 = echarts.init(
+            document.getElementById('6bbf63167d644c12ae3adeda283f36c1'), 'white', {renderer: 'canvas'});
+        var option_6bbf63167d644c12ae3adeda283f36c1 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "line",
+            "name": "Avg. annual P/E ratio",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "2007",
+                    "14.2"
+                ],
+                [
+                    "2008",
+                    "11.0"
+                ],
+                [
+                    "2009",
+                    "117.1"
+                ],
+                [
+                    "2010",
+                    "16.5"
+                ],
+                [
+                    "2011",
+                    "18.1"
+                ],
+                [
+                    "2012",
+                    "17.2"
+                ],
+                [
+                    "2013",
+                    "13.5"
+                ],
+                [
+                    "2014",
+                    "16.4"
+                ],
+                [
+                    "2015",
+                    "17.1"
+                ],
+                [
+                    "2016",
+                    "19.9"
+                ],
+                [
+                    "2017",
+                    "19.3"
+                ],
+                [
+                    "2018",
+                    "17.6"
+                ],
+                [
+                    "2019",
+                    "28.4"
+                ],
+                [
+                    "2020",
+                    "-21.6"
+                ],
+                [
+                    "2021",
+                    "36.6"
+                ],
+                [
+                    "2022",
+                    "22.7"
+                ],
+                [
+                    "TTM",
+                    "18.5"
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": false,
+                "margin": 8
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "markLine": {
+                "silent": false,
+                "precision": 2,
+                "label": {
+                    "show": true,
+                    "margin": 8
+                },
+                "data": [
+                    {
+                        "type": "average"
+                    }
+                ]
+            },
+            "zlevel": 0,
+            "z": 0,
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "line",
+            "name": "Operating margin",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "2007",
+                    "0"
+                ],
+                [
+                    "2008",
+                    "0"
+                ],
+                [
+                    "2009",
+                    "0"
+                ],
+                [
+                    "2010",
+                    "0"
+                ],
+                [
+                    "2011",
+                    "0"
+                ],
+                [
+                    "2012",
+                    "69.3"
+                ],
+                [
+                    "2013",
+                    "69.2"
+                ],
+                [
+                    "2014",
+                    "68.1"
+                ],
+                [
+                    "2015",
+                    "61.4"
+                ],
+                [
+                    "2016",
+                    "66.0"
+                ],
+                [
+                    "2017",
+                    "63.9"
+                ],
+                [
+                    "2018",
+                    "66.7"
+                ],
+                [
+                    "2019",
+                    "59.2"
+                ],
+                [
+                    "2020",
+                    "27.1"
+                ],
+                [
+                    "2021",
+                    "54.3"
+                ],
+                [
+                    "2022",
+                    "47.3"
+                ],
+                [
+                    "TTM",
+                    "48.7"
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": false,
+                "margin": 8
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "markLine": {
+                "silent": false,
+                "precision": 2,
+                "label": {
+                    "show": true,
+                    "margin": 8
+                },
+                "data": [
+                    {
+                        "type": "average"
+                    }
+                ]
+            },
+            "zlevel": 0,
+            "z": 0,
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "line",
+            "name": "Net profit margin",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "2007",
+                    "59.2"
+                ],
+                [
+                    "2008",
+                    "60.4"
+                ],
+                [
+                    "2009",
+                    "4.0"
+                ],
+                [
+                    "2010",
+                    "48.2"
+                ],
+                [
+                    "2011",
+                    "50.1"
+                ],
+                [
+                    "2012",
+                    "37.8"
+                ],
+                [
+                    "2013",
+                    "52.5"
+                ],
+                [
+                    "2014",
+                    "46.7"
+                ],
+                [
+                    "2015",
+                    "46.2"
+                ],
+                [
+                    "2016",
+                    "45.6"
+                ],
+                [
+                    "2017",
+                    "45.7"
+                ],
+                [
+                    "2018",
+                    "38.1"
+                ],
+                [
+                    "2019",
+                    "31.0"
+                ],
+                [
+                    "2020",
+                    "-31.8"
+                ],
+                [
+                    "2021",
+                    "18.5"
+                ],
+                [
+                    "2022",
+                    "23.1"
+                ],
+                [
+                    "TTM",
+                    "28.6"
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": false,
+                "margin": 8
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "markLine": {
+                "silent": false,
+                "precision": 2,
+                "label": {
+                    "show": true,
+                    "margin": 8
+                },
+                "data": [
+                    {
+                        "type": "average"
+                    }
+                ]
+            },
+            "zlevel": 0,
+            "z": 0,
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "line",
+            "name": "Payout Ratio",
+            "connectNulls": false,
+            "xAxisIndex": 0,
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "clip": true,
+            "step": false,
+            "data": [
+                [
+                    "2007",
+                    93.37
+                ],
+                [
+                    "2008",
+                    96.23
+                ],
+                [
+                    "2009",
+                    1600.0
+                ],
+                [
+                    "2010",
+                    127.56
+                ],
+                [
+                    "2011",
+                    136.84
+                ],
+                [
+                    "2012",
+                    133.85
+                ],
+                [
+                    "2013",
+                    109.87
+                ],
+                [
+                    "2014",
+                    115.71
+                ],
+                [
+                    "2015",
+                    119.7
+                ],
+                [
+                    "2016",
+                    118.03
+                ],
+                [
+                    "2017",
+                    118.7
+                ],
+                [
+                    "2018",
+                    128.41
+                ],
+                [
+                    "2019",
+                    181.44
+                ],
+                [
+                    "2020",
+                    -131.21
+                ],
+                [
+                    "2021",
+                    118.94
+                ],
+                [
+                    "2022",
+                    174.38
+                ],
+                [
+                    "TTM",
+                    161.61
+                ]
+            ],
+            "hoverAnimation": true,
+            "label": {
+                "show": false,
+                "margin": 8
+            },
+            "logBase": 10,
+            "seriesLayoutBy": "column",
+            "lineStyle": {
+                "show": true,
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
+            },
+            "areaStyle": {
+                "opacity": 0
+            },
+            "markLine": {
+                "silent": false,
+                "precision": 2,
+                "label": {
+                    "show": true,
+                    "margin": 8
+                },
+                "data": [
+                    {
+                        "type": "average"
+                    }
+                ]
+            },
+            "zlevel": 0,
+            "z": 0,
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "Avg. annual P/E ratio",
+                "Operating margin",
+                "Net profit margin",
+                "Payout Ratio"
+            ],
+            "selected": {},
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "2007",
+                "2008",
+                "2009",
+                "2010",
+                "2011",
+                "2012",
+                "2013",
+                "2014",
+                "2015",
+                "2016",
+                "2017",
+                "2018",
+                "2019",
+                "2020",
+                "2021",
+                "2022",
+                "TTM"
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "title": [
+        {
+            "show": true,
+            "text": "Ratios",
+            "target": "blank",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ],
+    "dataZoom": {
+        "show": true,
+        "type": "slider",
+        "showDetail": true,
+        "showDataShadow": true,
+        "realtime": true,
+        "start": 20,
+        "end": 80,
+        "orient": "horizontal",
+        "zoomLock": false,
+        "filterMode": "filter"
+    }
+};
+        chart_6bbf63167d644c12ae3adeda283f36c1.setOption(option_6bbf63167d644c12ae3adeda283f36c1);
+    </script>
+                <div id="04ad3000878d414abcdd3f855ba123e9" class="chart-container" style="width:900px; height:500px; "></div>
+    <script>
+            document.getElementById('04ad3000878d414abcdd3f855ba123e9').style.width = document.getElementById('04ad3000878d414abcdd3f855ba123e9').parentNode.clientWidth + 'px';
+        var chart_04ad3000878d414abcdd3f855ba123e9 = echarts.init(
+            document.getElementById('04ad3000878d414abcdd3f855ba123e9'), 'white', {renderer: 'canvas'});
+        var option_04ad3000878d414abcdd3f855ba123e9 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "aria": {
+        "enabled": false
+    },
+    "color": [
+        "#5470c6",
+        "#91cc75",
+        "#fac858",
+        "#ee6666",
+        "#73c0de",
+        "#3ba272",
+        "#fc8452",
+        "#9a60b4",
+        "#ea7ccc"
+    ],
+    "series": [
+        {
+            "type": "bar",
+            "name": "Free Cash Flow to Market Cap",
+            "legendHoverLink": true,
+            "data": [
+                3.64,
+                2.07,
+                0.9,
+                3.19,
+                5.16,
+                3.32,
+                6.17,
+                7.72,
+                4.7,
+                6.13,
+                4.57,
+                9.63,
+                4.22,
+                4.79,
+                3.78,
+                6.15,
+                6.26,
+                4.66,
+                5.93,
+                0.24,
+                4.38,
+                6.12,
+                5.95,
+                4.3,
+                6.66,
+                4.8,
+                11.27,
+                4.05,
+                7.08,
+                -0.77,
+                5.18,
+                6.76,
+                5.97,
+                1.67,
+                5.77,
+                0.27,
+                3.2,
+                5.9,
+                0.0,
+                3.91,
+                4.41,
+                8.17,
+                3.69,
+                5.9,
+                8.18,
+                5.78,
+                5.87,
+                6.79,
+                11.84,
+                4.24,
+                -5.52,
+                12.3,
+                0.62,
+                12.97,
+                20.28,
+                12.84,
+                8.3,
+                15.24
+            ],
+            "realtimeSort": false,
+            "showBackground": false,
+            "stackStrategy": "samesign",
+            "cursor": "pointer",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": true,
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "Free Cash Flow to Market Cap"
+            ],
+            "selected": {},
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14,
+            "backgroundColor": "transparent",
+            "borderColor": "#ccc",
+            "borderWidth": 1,
+            "borderRadius": 0,
+            "pageButtonItemGap": 5,
+            "pageButtonPosition": "end",
+            "pageFormatter": "{current}/{total}",
+            "pageIconColor": "#2f4554",
+            "pageIconInactiveColor": "#aaa",
+            "pageIconSize": 15,
+            "animationDurationUpdate": 800,
+            "selector": false,
+            "selectorPosition": "auto",
+            "selectorItemGap": 7,
+            "selectorButtonGap": 10
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "enterable": false,
+        "confine": false,
+        "appendToBody": false,
+        "transitionDuration": 0.4,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5,
+        "order": "seriesAsc"
+    },
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "PLD",
+                "AMT",
+                "EQIX",
+                "CCI",
+                "PSA",
+                "WELL",
+                "O",
+                "SPG",
+                "DLR",
+                "VICI",
+                "AVB",
+                "WY",
+                "SBAC",
+                "EQR",
+                "INVH",
+                "EXR",
+                "ARE",
+                "VTR",
+                "MAA",
+                "IRM",
+                "SUI",
+                "ESS",
+                "WPC",
+                "UDR",
+                "KIM",
+                "ELS",
+                "HST",
+                "AMH",
+                "GLPI",
+                "CPT",
+                "LSI",
+                "PEAK",
+                "REG",
+                "REXR",
+                "CUBE",
+                "BXP",
+                "COLD",
+                "LAMR",
+                "NNN",
+                "EGP",
+                "FRT",
+                "OHI",
+                "HR",
+                "FR",
+                "BRX",
+                "STAG",
+                "ADC",
+                "SRC",
+                "MPW",
+                "AIRC",
+                "RYN",
+                "KRC",
+                "CUZ",
+                "EPR",
+                "VNO",
+                "NSA",
+                "PK",
+                "HIW"
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": true,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "title": [
+        {
+            "show": true,
+            "text": "Free Cash Flow to Market Cap",
+            "target": "blank",
+            "subtext": "in Percentage",
+            "subtarget": "blank",
+            "padding": 5,
+            "itemGap": 10,
+            "textAlign": "auto",
+            "textVerticalAlign": "auto",
+            "triggerEvent": false
+        }
+    ]
+};
+        chart_04ad3000878d414abcdd3f855ba123e9.setOption(option_04ad3000878d414abcdd3f855ba123e9);
+    </script>
+    </div>
+
+    <script>
+    </script>
+    <script>
+        (function() {
+            containers = document.getElementsByClassName("chart-container");
+            if(containers.length > 0) {
+                containers[0].style.display = "block";
+            }
+        })()
+
+        function showChart(evt, chartID) {
+            let containers = document.getElementsByClassName("chart-container");
+            for (let i = 0; i < containers.length; i++) {
+                containers[i].style.display = "none";
+            }
+
+            let tablinks = document.getElementsByClassName("tablinks");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = "tablinks";
+            }
+
+            document.getElementById(chartID).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">import React, { useState, useEffect } from 'react';</p>
+<p class="p1">import { Timer, Trophy, SkipForward, Play, RefreshCcw, CheckCircle2, XCircle } from 'lucide-react';</p>
+<p class="p2"><br></p>
+<p class="p1">const rawQuestions = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 1,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "השלימו את הסדרה: 1963, 1973, 1983...",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["1993, 2003, 2013", "1993, 1994, 1995", "2000, 2010, 2020", "1984, 1985, 1986"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "1993, 2003, 2013"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 2,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "כתבו מספר הגדול מ-2000 המורכב מהספרות 0, 1, 2, 3 (פעם אחת בכל ספרה):",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["2013", "1320", "1023", "3210"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "2013"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 3,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "איזה תרגיל פתרונו הוא 1?",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["22 + 1", "22 × 1", "22 - 22", "22 : 22"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "22 : 22"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 4,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "השלימו: 500 - ____ = 360",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["140", "160", "240", "260"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "140"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 5,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "פתרו: 845 + 87 =",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["932", "922", "832", "942"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "932"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 6,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "פתרו: 6,000 - 780 =",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["5,220", "5,320", "4,220", "6,780"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "5,220"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 7,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "פתרו: 25 × 8 =",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["200", "180", "250", "150"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "200"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 8,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "פתרו: 40 : (4 + 6) =",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["4", "10", "16", "40"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "4"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 9,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "בכיתה 28 תלמידים. המורה נתנה לכל תלמיד עיפרון ונשארו לה 12. כמה עפרונות היו לה בהתחלה?",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["40", "16", "30", "50"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "40"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 10,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "מהו הסימן המתאים? 3 × 400 ____ 30 × 40",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["=", "&gt;", "&lt;"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "="</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 11,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "מהי השארית בתרגיל 28 : 5?",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["3", "2", "1", "אין שארית"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "3"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 12,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "בבי״ס 100 תלמידי כיתות ד'. בד1 יש 32, בד2 יש 33. כמה לומדים בד3?",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["35", "34", "45", "25"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "35"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 13,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "אם מחלקים 100 תלמידים לקבוצות של 10, כמה קבוצות יהיו?",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["10", "100", "1", "20"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "10"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>},</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>id: 14,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text: "איזו שעה תהיה רבע שעה אחרי 7:15, ועוד חצי שעה נסיעה?",</p>
+<p class="p1"><span class="Apple-converted-space">    </span>options: ["8:00", "7:45", "8:15", "7:30"],</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correctAnswer: "8:00"</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">const App = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [gameState, setGameState] = useState('START'); // START, PLAYING, END</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [questions, setQuestions] = useState([]);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [currentIndex, setCurrentIndex] = useState(0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [score, setScore] = useState(0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [timeLeft, setTimeLeft] = useState(120);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [feedback, setFeedback] = useState(null);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [userResponses, setUserResponses] = useState({});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const shuffle = (array) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return [...array].sort(() =&gt; Math.random() - 0.5);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const startGame = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 1. Shuffle the question list</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const shuffledQuestions = shuffle(rawQuestions);</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 2. For each question, shuffle its options as well</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const questionsWithShuffledOptions = shuffledQuestions.map(q =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">      </span>...q,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>options: shuffle(q.options)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>setQuestions(questionsWithShuffledOptions);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setCurrentIndex(0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setScore(0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setTimeLeft(120);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setUserResponses({});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setGameState('PLAYING');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setFeedback(null);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>useEffect(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let timer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (gameState === 'PLAYING' &amp;&amp; timeLeft &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>timer = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeLeft((prev) =&gt; prev - 1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}, 1000);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else if (timeLeft === 0 &amp;&amp; gameState === 'PLAYING') {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setGameState('END');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return () =&gt; clearInterval(timer);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}, [gameState, timeLeft]);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const handleAnswer = (answer) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (feedback) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const currentQ = questions[currentIndex];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const isCorrect = answer === currentQ.correctAnswer;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>setUserResponses(prev =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">      </span>...prev,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>[currentIndex]: answer</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (isCorrect) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setScore(prev =&gt; prev + 1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setFeedback({ type: 'success', message: 'כל הכבוד! תשובה נכונה' });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setFeedback({ type: 'error', message: `לא נכון. התשובה הנכונה היא: ${currentQ.correctAnswer}` });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setFeedback(null);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (currentIndex &lt; questions.length - 1) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setCurrentIndex(prev =&gt; prev + 1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setGameState('END');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}, 1500);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const skipQuestion = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setUserResponses(prev =&gt; ({</p>
+<p class="p1"><span class="Apple-converted-space">      </span>...prev,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>[currentIndex]: 'SKIPPED'</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}));</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>setFeedback(null);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (currentIndex &lt; questions.length - 1) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setCurrentIndex(prev =&gt; prev + 1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setGameState('END');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const formatTime = (seconds) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const mins = Math.floor(seconds / 60);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const secs = seconds % 60;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return `${mins}:${secs.toString().padStart(2, '0')}`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>return (</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col items-center p-4 md:p-8" dir="rtl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{/* Header Area */}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;header className="w-full max-w-3xl bg-white rounded-2xl shadow-sm p-4 mb-8 flex justify-between items-center sticky top-4 z-10 border border-slate-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="flex items-center gap-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div className="bg-blue-100 p-2 rounded-lg text-blue-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;Trophy size={24} /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-xs text-slate-500 font-medium"&gt;הניקוד שלך&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-xl font-bold"&gt;{score}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="flex items-center gap-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div className={`p-2 rounded-lg ${timeLeft &lt; 20 &amp;&amp; gameState === 'PLAYING' ? 'bg-red-100 text-red-600 animate-pulse' : 'bg-green-100 text-green-600'}`}&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;Timer size={24} /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-xs text-slate-500 font-medium"&gt;זמן נותר&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className={`text-xl font-bold ${timeLeft &lt; 20 &amp;&amp; gameState === 'PLAYING' ? 'text-red-600' : ''}`}&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>{formatTime(timeLeft)}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>{/* Main Game Container */}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;main className="w-full max-w-3xl flex-grow flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{gameState === 'START' &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div className="bg-white rounded-3xl shadow-xl p-8 text-center flex-grow flex flex-col justify-center items-center gap-6 border-b-8 border-blue-500 transition-all"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 className="text-4xl font-extrabold text-slate-800 tracking-tight"&gt;אתגר המתמטיקה - כיתה ד'&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-lg text-slate-600 max-w-md font-medium"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">              </span>התשובות מעורבבות בכל פעם! ענו על כמה שיותר שאלות ב-2 דקות.</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">              </span>onClick={startGame}</p>
+<p class="p1"><span class="Apple-converted-space">              </span>className="group flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-full text-2xl font-bold transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-blue-200"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">              </span>בואו נתחיל!</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;Play className="fill-current ml-2" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>)}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>{gameState === 'PLAYING' &amp;&amp; questions.length &gt; 0 &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div className="relative flex-grow flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-3xl shadow-xl p-8 border-b-8 border-blue-200 transition-all"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div className="mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-bold"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                  </span>שאלה {currentIndex + 1} מתוך {questions.length}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 className="text-2xl font-bold mt-4 leading-relaxed text-slate-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>{questions[currentIndex].text}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{questions[currentIndex].options.map((option, idx) =&gt; (</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;button</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>key={idx}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>disabled={feedback !== null}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>onClick={() =&gt; handleAnswer(option)}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>className={`text-right p-5 rounded-2xl border-2 transition-all font-semibold text-lg</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>${feedback ? 'opacity-50 cursor-not-allowed' : 'hover:border-blue-500 hover:bg-blue-50 active:bg-blue-100 border-slate-100'}`}</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{option}</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>))}</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div className="flex justify-between items-center pt-6 border-t border-slate-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                  </span>onClick={skipQuestion}</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>disabled={feedback !== null}</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>className="flex items-center gap-2 text-slate-400 hover:text-slate-600 font-bold px-4 py-2 transition-colors"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;SkipForward size={20} /&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                  </span>דלג על השאלה</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>{feedback &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div className={`mt-6 p-5 rounded-2xl flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-300 shadow-md</p>
+<p class="p1"><span class="Apple-converted-space">                </span>${feedback.type === 'success' ? 'bg-green-100 text-green-800 border-r-4 border-green-500' : 'bg-red-100 text-red-800 border-r-4 border-red-500'}`}&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{feedback.type === 'success' ? &lt;CheckCircle2 className="shrink-0" /&gt; : &lt;XCircle className="shrink-0" /&gt;}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span className="font-bold text-lg"&gt;{feedback.message}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>)}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>)}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>{gameState === 'END' &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div className="space-y-6 pb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-3xl shadow-xl p-10 text-center flex flex-col justify-center items-center gap-6 border-b-8 border-green-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div className="bg-yellow-100 p-5 rounded-full text-yellow-500 mb-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;Trophy size={48} /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 className="text-4xl font-extrabold text-slate-800 mb-2"&gt;כל הכבוד!&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p className="text-2xl text-slate-600 font-medium"&gt;צברת {score} נקודות מתוך {Object.keys(userResponses).length} שאלות שענית עליהן&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>onClick={startGame}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl text-xl font-bold transition-all shadow-lg"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;RefreshCcw size={20} /&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                </span>נסה שוב</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div className="mt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3 className="text-2xl font-bold text-slate-800 mb-6 px-2 underline decoration-blue-500 decoration-4 underline-offset-8"&gt;סיכום התשובות שלך:&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div className="grid gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{questions.map((q, idx) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>const userAns = userResponses[idx];</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>if (!userAns) return null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                  </span>return (</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div key={idx} className="bg-white rounded-2xl shadow-sm p-6 border border-slate-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div className="flex justify-between items-start mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 className="font-bold text-lg text-slate-800 max-w-[85%]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>{idx + 1}. {q.text}</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{userAns === q.correctAnswer ? (</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;span className="bg-green-100 text-green-600 p-1 rounded-full"&gt;&lt;CheckCircle2 size={20} /&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>) : (</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>&lt;span className="bg-red-100 text-red-600 p-1 rounded-full"&gt;&lt;XCircle size={20} /&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>)}</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                      </span></p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;div className="grid grid-cols-1 sm:grid-cols-2 gap-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{q.options.map((opt, optIdx) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>const isCorrect = opt === q.correctAnswer;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>const isSelected = opt === userAns;</p>
+<p class="p2"><span class="Apple-converted-space">                          </span></p>
+<p class="p1"><span class="Apple-converted-space">                          </span>let bgClass = "bg-slate-50 text-slate-600 border-slate-100";</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>if (isCorrect) bgClass = "bg-green-50 border-green-500 text-green-700 border-2";</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>if (isSelected &amp;&amp; !isCorrect) bgClass = "bg-red-50 border-red-500 text-red-700 border-2";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                          </span>return (</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div key={optIdx} className={`p-3 rounded-xl border text-sm font-bold flex justify-between items-center ${bgClass}`}&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                              </span>{opt}</p>
+<p class="p1"><span class="Apple-converted-space">                              </span>{isSelected &amp;&amp; &lt;span className="text-[10px] uppercase px-1.5 py-0.5 bg-white/50 rounded ml-2"&gt;הבחירה שלך&lt;/span&gt;}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                          </span>);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>})}</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                      </span></p>
+<p class="p1"><span class="Apple-converted-space">                      </span>{userAns === 'SKIPPED' &amp;&amp; (</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div className="mt-3 text-sm font-bold text-orange-500 bg-orange-50 p-2 rounded-lg inline-block"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">                          </span>דילגת על שאלה זו</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                      </span>)}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>})}</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>)}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;footer className="mt-auto pt-8 text-slate-400 text-sm font-medium"&gt;</p>
+<p dir="rtl" class="p1"><span class="Apple-converted-space">        </span>מערכת תרגול משרד החינוך - כיתה ד'</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>);</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">export default App;</p>
+</body>
+</html>
